@@ -1,0 +1,76 @@
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.pdb
+*.opendata
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Packages
+*.nupkg
+*.snupkg
+*.dll
+*.exe
+
+# Rider
+.idea/
+
+# Logs
+logs/
+
+# appsettings.json overrides (important for secrets)
+appsettings.Development.json
+appsettings.Production.json
+
+# Other common ignores
+*.log
+*.bak
+*.tmp
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+*.csproj.user
+*.dbmdl
+*.jfm
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.pubxml
+*.pfx
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# npm
+node_modules/
+
+# Dotnet tool files
+.config/
+.dotnet/
+
+# Test results
+TestResults/
+
+# Local settings
+*.local
+
+# User secrets
+.secrets/
+
+# Publish output
+publish/
