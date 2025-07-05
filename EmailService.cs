@@ -1,3 +1,4 @@
+using System.IO;
 using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Options;
@@ -94,9 +95,16 @@ public class EmailService : IEmailService
 
             if (!string.IsNullOrEmpty(attachmentFilePath) && File.Exists(attachmentFilePath))
             {
-                var attachment = new Attachment(attachmentFilePath);
-                mailMessage.Attachments.Add(attachment);
-                _logger.LogInformation("Attaching file: {FilePath}", attachmentFilePath);
+                // Copy the file to a MemoryStream to avoid file locking issues
+                using (var fileStream = new FileStream(attachmentFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    var memoryStream = new MemoryStream();
+                    await fileStream.CopyToAsync(memoryStream);
+                    memoryStream.Position = 0;
+                    var attachment = new Attachment(memoryStream, Path.GetFileName(attachmentFilePath));
+                    mailMessage.Attachments.Add(attachment);
+                    _logger.LogInformation("Attaching file: {FilePath}", attachmentFilePath);
+                }
             }
 
             await client.SendMailAsync(mailMessage);
