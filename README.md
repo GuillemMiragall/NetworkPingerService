@@ -144,7 +144,7 @@ For continuous, background operation on Linux, it's recommended to deploy the ap
 
 1.  **Publish the application:**
     ```bash
-    dotnet publish --configuration Release --runtime linux-x64 --self-contained true -o publish
+    dotnet publish --configuration Release --runtime linux-x64 --self-contained true
     ```
     This command creates a self-contained deployment in the `publish` folder, meaning all necessary .NET runtime components are included, and it can run without a global .NET installation.
 
@@ -201,7 +201,7 @@ For continuous, background operation on Windows, it's recommended to deploy the 
 1.  **Publish the application for Windows:**
     On a Windows machine (or using `dotnet publish` with the correct runtime identifier on Linux/macOS):
     ```bash
-    dotnet publish --configuration Release --runtime win-x64 --self-contained true -o publish-win
+    dotnet publish --configuration Release --runtime win-x64 --self-contained true
     ```
     This command creates a self-contained deployment in the `publish-win` folder, meaning all necessary .NET runtime components are included, and it can run without a global .NET installation on the target Windows machine.
 
